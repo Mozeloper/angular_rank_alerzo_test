@@ -1,6 +1,7 @@
 import React from 'react';
 
 const getInitialTheme = () => {
+    console.log(window.matchMedia('(prefers-color-scheme: dark)').matches)
     if (typeof window !== 'undefined' && window.localStorage) {
         const storedPrefs = window.localStorage.getItem('current-theme');
         if (typeof storedPrefs === 'string') {
@@ -21,7 +22,6 @@ export const ThemeProvider = ({ initialTheme, children }) => {
     const checkTheme = (existing) => {
         const root = window.document.documentElement;
         const isDark = existing === 'dark';
-
         root.classList.remove(isDark ? 'light' : 'dark');
         root.classList.add(existing);
 
